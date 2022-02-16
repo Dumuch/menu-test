@@ -170,11 +170,11 @@ export default {
       this.chooseGroups = [];
     },
 
-    deepSearch(arr, item) {
-      for (var i = 0; i < arr.length; i++) {
+    searchToBreadcrumbs(arr, item) {
+      for (let i = 0; i < arr.length; i++) {
         if (
           arr[i].groups.length !== 0 &&
-          this.deepSearch(arr[i].groups, item)
+          this.searchToBreadcrumbs(arr[i].groups, item)
         ) {
           this.breadCrumbs.push(arr[i]);
           return this.breadCrumbs;
@@ -207,21 +207,21 @@ export default {
 
         if (group) {
           if (!group.list.find((group) => group.id === item.id)) {
-            group.list = this.deepSearch(arr, item.id).reverse();
+            group.list = this.searchToBreadcrumbs(arr, item.id).reverse();
           } else {
-            this.deepSearch(arr, item.id).reverse();
+            this.searchToBreadcrumbs(arr, item.id).reverse();
           }
         } else {
           const obj = {
             id: this.activeIdGoup,
-            list: this.deepSearch(arr, item.id).reverse(),
+            list: this.searchToBreadcrumbs(arr, item.id).reverse(),
           };
           this.chooseGroupsList.push(obj);
         }
       } else {
         const obj = {
           id: this.activeIdGoup,
-          list: this.deepSearch(arr, item.id).reverse(),
+          list: this.searchToBreadcrumbs(arr, item.id).reverse(),
         };
         this.chooseGroupsList.push(obj);
       }
