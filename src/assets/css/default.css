@@ -281,6 +281,17 @@ header {
   background-repeat: no-repeat;
 }
 
+
+.button-choose__minus {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  background-image: url("../img/icons/minus.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .form__button-choose {
   margin-top: 40px;
 }

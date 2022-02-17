@@ -91,11 +91,18 @@
                 </ul>
 
                 <button
-                  @click.prevent="openMenuList"
+                  @click.prevent="openMenuList" v-if="!isShowMenuList"
                   class="button-choose form__button-choose"
                 >
                   <span class="button-choose__plus"></span>
                   Выбрать еще
+                </button>
+                 <button
+                  @click.prevent="openMenuList" v-else
+                  class="button-choose form__button-choose"
+                >
+                  <span class="button-choose__minus"></span>
+                  Закрыть
                 </button>
               </div>
             </fieldset>
